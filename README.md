@@ -4,7 +4,7 @@
 
 Official code for "Get the Best of Both Worlds: Improving Accuracy and Transferability by Grassmann Class Representation (ICCV 2023)"
 
-![Grassmann class representation](./resource/grass1.png | width=400)
+![Grassmann class representation](./resource/grass1.png)
 
 ## Installation
 
