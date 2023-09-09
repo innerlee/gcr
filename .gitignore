@@ -124,7 +124,7 @@ venv.bak/
 *.pkl
 *.pkl.json
 *.log.json
-/work_dirs
+/work_dirs*
 /projects/*/work_dirs
 /projects/*/data
 /mmpretrain/.mim
