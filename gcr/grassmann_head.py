@@ -33,7 +33,6 @@ class GrassmannClsHead(ClsHead):
                  in_channels: int,
                  dims,
                  gamma=25.0,
-                 orth_init=False,
                  init_cfg: Optional[dict] = dict(
                      type='Normal', layer='Linear', std=0.01),
                  **kwargs):
@@ -46,7 +45,6 @@ class GrassmannClsHead(ClsHead):
         assert len(dims) == num_classes
         assert len(np.unique(dims)) == 1
         self.subdim = dims[0]
-        self.orth_init = orth_init
 
         if self.num_classes <= 0:
             raise ValueError(
@@ -56,8 +54,6 @@ class GrassmannClsHead(ClsHead):
         self.fc.weight.geometry = dims
 
     def init_weights(self):
-        if not self.orth_init:
-            return
         with torch.no_grad():
             w = self.fc.weight
             nn.init.normal_(w)
@@ -66,7 +62,6 @@ class GrassmannClsHead(ClsHead):
             wt = torch.linalg.qr(wt).Q
             w = wt.permute([0, 2, 1]).reshape(-1, self.in_channels)
             self.fc.weight.add_(w - self.fc.weight)
-            print('init geom with mean ', self.fc.weight.mean().cpu().item())
 
     def pre_logits(self, feats: Tuple[torch.Tensor]) -> torch.Tensor:
         """The process before the final classification head.
