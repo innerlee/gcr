@@ -1,6 +1,7 @@
 # Grassmann Class Representation
 
 [![🦢 - Paper](https://img.shields.io/badge/🦢-Paper-red)](https://arxiv.org/pdf/2308.01547)
+[![🌊 - Poster](https://img.shields.io/badge/🌊-Paper-blue)](./resource/gcr-iccv2023-poster.pdf)
 
 Official code for "Get the Best of Both Worlds: Improving Accuracy and Transferability by Grassmann Class Representation (ICCV 2023)"
 
@@ -43,3 +44,8 @@ booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vi
 year = {2023}
 }
 ```
+
+
+## Related Projects
+
+[ViM: Out-Of-Distribution with Virtual-logit Matching (CVPR 2022)](https://github.com/haoqiwang/vim)
