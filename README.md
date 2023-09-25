@@ -5,6 +5,8 @@
 
 Official code for "Get the Best of Both Worlds: Improving Accuracy and Transferability by Grassmann Class Representation (ICCV 2023)"
 
+https://github.com/innerlee/gcr/assets/9464825/37708eb8-740c-46df-ad24-7bcf6ef592c9
+
 ![Grassmann class representation](./resource/pipeline_gcr.jpg)
 
 ## Installation
