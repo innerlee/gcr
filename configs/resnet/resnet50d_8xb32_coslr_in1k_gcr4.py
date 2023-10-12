@@ -8,13 +8,15 @@ model = dict(
     type='ImageClassifier',
     backbone=dict(
         type='ResNetV1d',
-        depth=152,
+        depth=50,
         num_stages=4,
         out_indices=(3, ),
         style='pytorch'),
     neck=dict(type='GlobalAveragePooling'),
     head=dict(
-        type='LinearClsHead',
+        type='GrassmannClsHead',
+        gamma=25.0,
+        dims=[4] * 1000,
         num_classes=1000,
         in_channels=2048,
         loss=dict(type='CrossEntropyLoss', loss_weight=1.0),
@@ -83,7 +85,7 @@ test_evaluator = val_evaluator
 #
 # optimizer
 optim_wrapper = dict(
-    optimizer=dict(type='SGD', lr=0.1, momentum=0.9, weight_decay=0.0001))
+    optimizer=dict(type='RSGD', lr=0.1, momentum=0.9, weight_decay=0.0001))
 
 # learning policy
 param_scheduler = dict(

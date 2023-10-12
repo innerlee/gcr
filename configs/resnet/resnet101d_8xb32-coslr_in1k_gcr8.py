@@ -37,15 +37,8 @@ data_preprocessor = dict(
     to_rgb=True,
 )
 
-mc_cfg = dict(
-    backend='memcached',
-    server_list_cfg='/mnt/lustre/share/memcached_client/server_list.conf',
-    client_cfg='/mnt/lustre/wanghaoqi/client.conf',
-    sys_path='/mnt/lustre/share/pymc/py3')
-
 train_pipeline = [
     dict(type='LoadImageFromFile'),
-    # dict(type='LoadImageFromFile', file_client_args=mc_cfg),
     dict(type='RandomResizedCrop', scale=224, backend='pillow'),
     dict(type='RandomFlip', prob=0.5, direction='horizontal'),
     dict(type='PackInputs'),
@@ -53,7 +46,6 @@ train_pipeline = [
 
 test_pipeline = [
     dict(type='LoadImageFromFile'),
-    # dict(type='LoadImageFromFile', file_client_args=mc_cfg),
     dict(type='ResizeEdge', scale=256, edge='short', backend='pillow'),
     dict(type='CenterCrop', crop_size=224),
     dict(type='PackInputs'),
